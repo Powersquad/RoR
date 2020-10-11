@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Main Menu</title>
+</head>
+<body>
+    <div class="header">
+        <h1 class="primary-message">Main Menu</h1>
+    <div>
+
+    <div id="main" class="main">
+       
+        <button type="button" class="action" id="startTrans">Start Transaction</button>
+        <button type="button" class="action" id="viewProducts">View Products</button>
+        <div>
+                <% if current_employee.isElevatedUser == true %>
+                    <button type="button" class="action" id="newEmployee">Create Employee</button>
+                    <button type="button" class="action" id="salesReport">Sales Report</button>
+                    <button type="button" class="action" id="cashierReport">Cashier Report</button>
+                <% end %>
+        </div>
+
+        </button>
+    </div>
+    <%= yield %>
+</body>
+</html>
