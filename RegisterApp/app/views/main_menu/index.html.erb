@@ -9,12 +9,13 @@
     <div>
 
     <div id="main" class="main">
-       
-        <button type="button" class="action" id="startTrans">Start Transaction</button>
-        <button type="button" class="action" id="viewProducts">View Products</button>
+
+        <button type="button" class="action" action="../layouts" id="startTrans">Start Transaction</button>
+
+        <%= button_to '/productListing', class: 'button', :method => "get" do %>View Products<% end %>
         <div>
                 <% if current_employee.isElevatedUser == true %>
-                    <button type="button" class="action" id="newEmployee">Create Employee</button>
+                     <%= button_to 'employee', class: 'button', :method => "get" do %>Create Employee<% end %>
                     <button type="button" class="action" id="salesReport">Sales Report</button>
                     <button type="button" class="action" id="cashierReport">Cashier Report</button>
                 <% end %>

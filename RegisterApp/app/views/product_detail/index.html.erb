@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Register - Product</title>
+	<%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+	<div class="header">
+		<h1 class="primary-message">Product Detail</h1>
+	</div>
+		
+	<div id="main" class="main">
+		
+
+		<div class="productDetailWrapper">
+			<table id="productDetails">
+				<tbody>
+					<tr class="hidden">
+						<td>ID:</td>
+						<td>
+							<input id="productId" type="hidden" value="<% if product.getID%><%= product.getID%> <% end %>" /> 
+                            <%# check to see if there is a product and a product id, if so, display productId %>
+							
+
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Lookup Code:</td>
+						<td>
+							<input id="productLookupCode" type="text" value="<% if product.getLookupCode%><%= product.getLookupCode%> <% end %>"/>
+                            <%# check to see if there is a product and a product lookup code, if so, display productId %>
+                        </td>
+					</tr>
+					<tr>
+						<td class="label">Count:</td>
+						<td>
+							<input id="productCount" type="number" value="<% if product.getCount%><%= product.getCount%> <% end %>" class="update" />
+                            <%# check to see if there is a product and a product count, if so, display productId %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div>
+			<br />
+			<div id="deleteActionContainer" >
+            <%# if there is no products or no product ids then hide %>
+				<% if product%>
+					<button id="deleteButton" type="button" class="action">Delete</button>
+					<br />
+					<br />
+				<% end %>
+			</div>
+			<button id="saveButton" type="button" class="action">Save</button>
+		</div>
+
+		<div id="productSavedAlertModal" class="modal animate-opacity-show">
+			<div class="modal-content">
+				<div class="container gray-blue">
+					<h1>
+						<span>Product</span><br />
+						<span>Saved</span>
+					</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

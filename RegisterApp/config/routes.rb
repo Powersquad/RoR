@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   #   sign_in: '',
   #   sign_out: 'signOut'
   # }
-  get '/test', to: 'main_menu#index'
+  get '/test', to: 'main_menu#test'
   get '/mainMenu', to: 'main_menu#index'
+  get '/productListing', to: 'product_listing#index'
+  get '/productDetail', to: 'product_detail#index'
+  post '/productDetail', to: 'product_detail#new'
+
+  resources :employee
 end

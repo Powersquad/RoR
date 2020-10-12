@@ -10,19 +10,29 @@
   </head>
 
   <body>
-  
-  
+    <% if flash.any? %>
+    <script type="text/javascript">
+<% flash.each do |key, value| %>
+        <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+        toastr.<%= type %>('<%= value %>')
+      <% end %>
+</script>
+    <% end %>
+
   <% if employee_signed_in? %>
   <p>
     Your EmployeeId: <%= current_employee.email %>
   </p>
   <li>
-  <%= link_to('Logout', destroy_employee_session_path, method: :delete) %>        
+  <%# <%= link_to image_tag('../assets/images/system_update_alt-24px.svg'), destroy_employee_session_path, method: :delete %>
+    <%= link_to destroy_employee_session_path, method: :delete do %>
+      <%= image_tag "system_update_alt-24px.svg" %>
+    <% end %>
   </li>
   <%= link_to 'Edit Profile', edit_employee_registration_path %>
   <% else %>
   <li>
-  <%= link_to('Login', new_employee_session_path) %>  
+  <%= link_to('Login', new_employee_session_path) %>
   </li>
   <% end %>
 
