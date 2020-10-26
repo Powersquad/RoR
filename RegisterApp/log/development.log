@@ -24,3 +24,11 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 15ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 2771)
 
 
+Started GET "/" for 127.0.0.1 at 2020-10-26 18:11:33 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/noahbalboa66/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/noahbalboa66/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 22.9ms | Allocations: 309)
+Completed 200 OK in 30ms (Views: 24.9ms | ActiveRecord: 0.0ms | Allocations: 1797)
+
+
