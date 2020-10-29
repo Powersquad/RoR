@@ -1,0 +1,7 @@
+<%= form_with url: sessions_path do |f|%>
+    <%= f.label :employeeId, "Employee ID" %>
+    <%= f.text_field :employeeId, :required => true, :value => params[:employeeId]%></br>
+    <%= f.label :password, "Password" %>
+    <%= f.text_field :password, :required => true%></br>
+    <%= f.submit "Sign In" %>
+<% end %>

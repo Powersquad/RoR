@@ -1,0 +1,18 @@
+<%= form_with model: @employee do |f| %>
+    <%= f.label :firstName, "First Name" %>
+    <%= f.text_field :firstName, :required => true%></br>
+    <%= f.label :lastName, "Last Name" %>
+    <%= f.text_field :lastName, :required => true%></br>
+    <%= f.label :classification_general_manager, "General Manager"%>
+    <%= f.radio_button :classification, "general_manager", :required => true %></br>
+    <%= f.label :classification_shift_manager, "Shift Manager"%>
+    <%= f.radio_button :classification, "shift_manager" %></br>
+    <%= f.label :classification_cashier, "Cashier"%>
+    <%= f.radio_button :classification, "cashier" %></br>
+    <%= f.label :password, "Password"%>
+    <%= f.text_field :password, :required => true%>
+    <%= f.label :verify_password, "Verify Password" %>
+    <%= f.text_field :verify_password, :required => true%>
+    <%= f.hidden_field :isFirst, :value => params[:isFirst]%>
+    <%= f.submit "Create" %>
+<% end %>

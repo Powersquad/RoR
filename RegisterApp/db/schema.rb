@@ -10,18 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_061712) do
+ActiveRecord::Schema.define(version: 2020_10_26_234957) do
 
   create_table "employees", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.integer "employeeId", null: false
+    t.string "password_digest", default: "", null: false
+    t.string "firstName", default: "", null: false
+    t.string "lastName", default: "", null: false
+    t.boolean "active", default: false
+    t.integer "classification", null: false
+    t.integer "manager_id", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_employees_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+    t.index ["active"], name: "index_employees_on_active"
+    t.index ["employeeId"], name: "index_employees_on_employeeId", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "lookupCode", default: "", null: false
+    t.integer "count", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"loopupCode\"", name: "index_products_on_loopupCode", unique: true
   end
 
 end
