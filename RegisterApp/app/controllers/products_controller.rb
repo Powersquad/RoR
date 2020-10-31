@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(lookupCode: params[:id])
+    @product = Product.find_by(lookupCode: params[:id])
   end
 
   def new
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   def update
     id = params[:product][:id]
     count = params[:product][:count]
-    product = Product.find(lookupCode: id)
+    product = Product.find_by(lookupCode: id)
     product.count = count
 
     if product.save
@@ -43,7 +43,8 @@ class ProductsController < ApplicationController
 
   def destroy
     id = params[:product][:id]
-    product = Product.find(lookupCode: id)
+
+    product = Product.find_by(lookupCode: id)
 
     if product.destroy
       flash[:notice] = "Product was deleted"
