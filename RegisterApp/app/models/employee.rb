@@ -13,18 +13,18 @@ class Employee < ApplicationRecord
     else
       id = 253
     end
-    
+
     employee.employeeId = id
   end
-  
-  def self.getHighestEmployeeId 
+
+  def self.getHighestEmployeeId
     return Employee.last.employeeId
   end
-  
+
   def self.anyEmployeeExists
     return (Employee.first.nil?) ? false : true
   end
-  
+
   def isElevatedUser
     isElevated = false
 
