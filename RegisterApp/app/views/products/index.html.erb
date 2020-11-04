@@ -1,0 +1,6 @@
+<%= button_to "Create New", new_product_path, :method => "get" %>
+<% @products.each do |product|%>
+    <%= product.lookupCode %>
+    <%= button_to "Edit", edit_product_path(product.id), :method => "get" %>
+<% end %>
+
