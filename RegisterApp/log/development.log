@@ -5371,3 +5371,1463 @@ Processing by EmployeesController#index as HTML
 Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.1ms | Allocations: 6238)
 
 
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:18:24 -0600
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.8ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 18.8ms | Allocations: 3059)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/lukemiller/Developer/SE/RoR/RegisterApp/public/packs
+[Webpacker] Hash: 15d1bb7b54cf6326b9ba
+Version: webpack 4.44.2
+Time: 3164ms
+Built at: 11/03/2020 10:18:29 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9afcbb5693aa87623e69.js    124 KiB  application  [emitted] [immutable]  application
+js/application-9afcbb5693aa87623e69.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 5346ms (Views: 5261.9ms | ActiveRecord: 3.1ms | Allocations: 43524)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateEmployees (20201026232245)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "employees" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "employeeId" integer DEFAULT NULL NOT NULL, "password_digest" varchar DEFAULT '' NOT NULL, "firstName" varchar DEFAULT '' NOT NULL, "lastName" varchar DEFAULT '' NOT NULL, "active" boolean DEFAULT 0, "classification" integer NOT NULL, "manager_id" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_employees_on_employeeId" ON "employees" ("employeeId")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_employees_on_active" ON "employees" ("active")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201026232245"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProducts (20201026234957)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "lookupCode" varchar DEFAULT '' NOT NULL, "count" integer DEFAULT 0 NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_loopupCode" ON "products" ("loopupCode")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201026234957"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-04 04:19:48.668321"], ["updated_at", "2020-11-04 04:19:48.668321"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:20:59 -0600
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+Redirected to http://localhost:3000/employees/new?isFirst=true
+Completed 302 Found in 21ms (ActiveRecord: 1.2ms | Allocations: 3945)
+
+
+Started GET "/employees/new?isFirst=true" for 127.0.0.1 at 2020-11-03 22:20:59 -0600
+Processing by EmployeesController#new as HTML
+  Parameters: {"isFirst"=>"true"}
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (Duration: 18.7ms | Allocations: 2459)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 42.0ms | ActiveRecord: 0.0ms | Allocations: 17575)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-11-03 22:21:20 -0600
+Processing by EmployeesController#create as JS
+  Parameters: {"authenticity_token"=>"8nzlMgpx2ZvrEqvxdUwfC2h7jN9l9LrsopA/kwwaQrNLajDSrYNu0N9fuZMOzBABmT3Qg+EOH5fNZ+u2al37eg==", "employee"=>{"firstName"=>"Luke", "lastName"=>"Miller", "classification"=>"general_manager", "password"=>"[FILTERED]", "verify_password"=>"[FILTERED]", "isFirst"=>"true"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  [1m[36mEmployee Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:59:in `create'
+  [1m[36mEmployee Create (1.4ms)[0m  [1m[32mINSERT INTO "employees" ("employeeId", "password_digest", "firstName", "lastName", "classification", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["employeeId", 253], ["password_digest", "$2a$12$o7/7EZJfTlxeMpBfH.LDXOEY6RA2d7LQ5gWdwMYKq/EXG31lpvhsu"], ["firstName", "Luke"], ["lastName", "Miller"], ["classification", 2], ["created_at", "2020-11-04 04:21:20.430852"], ["updated_at", "2020-11-04 04:21:20.430852"]]
+  ↳ app/controllers/employees_controller.rb:59:in `create'
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/employees_controller.rb:59:in `create'
+Redirected to http://localhost:3000/employees?employeeId=253
+Completed 200 OK in 323ms (ActiveRecord: 9.0ms | Allocations: 7245)
+
+
+Started GET "/employees?employeeId=253" for 127.0.0.1 at 2020-11-03 22:21:20 -0600
+Processing by EmployeesController#index as HTML
+  Parameters: {"employeeId"=>"253"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2098)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 18.5ms | ActiveRecord: 0.3ms | Allocations: 6941)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-11-03 22:21:33 -0600
+Processing by SessionsController#create as JS
+  Parameters: {"authenticity_token"=>"hG4j+UqUxtijYeKvSnY38+9ubHBmf9+msbOEQ50xanXdXLbQw+hU+A8LYiuNZOL/rxB4h+OTQRW+dlPLXbEbrA==", "employeeId"=>"253", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mEmployee Load (0.9ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Redirected to http://localhost:3000/employees
+Completed 200 OK in 304ms (ActiveRecord: 0.9ms | Allocations: 1200)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-11-03 22:21:33 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1902)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 11.0ms | ActiveRecord: 0.3ms | Allocations: 6604)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-11-03 22:21:39 -0600
+Processing by SessionsController#create as JS
+  Parameters: {"authenticity_token"=>"UKruY45scnQ29VR4OIKRqofarqMBFobwImRZtI54Kw0JmHtKBxDgVJqf1Pz/kESmx6S6VIT6GEMtoY48Tvha1A==", "employeeId"=>"253", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Redirected to http://localhost:3000/main_menu
+Completed 200 OK in 294ms (ActiveRecord: 0.2ms | Allocations: 1049)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:21:40 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 10.0ms | ActiveRecord: 0.3ms | Allocations: 5389)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:22:02 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 55)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 0.2ms | Allocations: 4687)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:22:03 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1911)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.1ms | Allocations: 6596)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-11-03 22:22:06 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:22:17 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1905)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.2ms | Allocations: 6656)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-11-03 22:22:19 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/product" for 127.0.0.1 at 2020-11-03 22:22:21 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/product"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/products" for 127.0.0.1 at 2020-11-03 22:22:35 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/products_path" for 127.0.0.1 at 2020-11-03 22:23:09 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products_path"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/products_path" for 127.0.0.1 at 2020-11-03 22:23:14 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products_path"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/products" for 127.0.0.1 at 2020-11-03 22:23:15 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/product" for 127.0.0.1 at 2020-11-03 22:23:29 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/product"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/products_path" for 127.0.0.1 at 2020-11-03 22:23:30 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products_path"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:23:30 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1902)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 9.0ms | ActiveRecord: 0.6ms | Allocations: 6584)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:24:45 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2649)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 90ms (Views: 56.0ms | ActiveRecord: 2.0ms | Allocations: 21626)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-11-03 22:24:52 -0600
+Processing by SessionsController#create as JS
+  Parameters: {"authenticity_token"=>"U4veW5Ft7m/fcsGPVBrC8e/C/AxIApCZwdXUVBgv3/7qnQu7Np9ZJOs/0+0vms37HoSgUMz4NeKuIgBxfmhmNw==", "employeeId"=>"253", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Redirected to http://localhost:3000/main_menu
+Completed 200 OK in 295ms (ActiveRecord: 0.3ms | Allocations: 1492)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:24:52 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.2ms | Allocations: 5397)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:24:58 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 56)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 4730)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:25:01 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 12.4ms | ActiveRecord: 0.2ms | Allocations: 6627)
+
+
+Started GET "/products_path" for 127.0.0.1 at 2020-11-03 22:25:01 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products_path"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/product" for 127.0.0.1 at 2020-11-03 22:25:03 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/product"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/products" for 127.0.0.1 at 2020-11-03 22:25:03 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/product" for 127.0.0.1 at 2020-11-03 22:25:08 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/product"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/products" for 127.0.0.1 at 2020-11-03 22:25:08 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/products"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/product" for 127.0.0.1 at 2020-11-03 22:27:03 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/product"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:27:11 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1182)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 12.0ms | ActiveRecord: 0.7ms | Allocations: 6306)
+
+
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:28:36 -0600
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1542)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 4412)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= link_to <button type="button">Create New</button>, new_product_path %>
+<% @products.each do |product|%>
+    <%= product.lookupCode %>
+    <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+<% end %>
+
+
+):
+1:    <%= link_to <button type="button">Create New</button>, new_product_path %>
+2:    <% @products.each do |product|%>
+3:        <%= product.lookupCode %>
+4:        <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+5:    <% end %>
+  
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:28:40 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1037)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1525)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= link_to <button type="button">Create New</button>, new_product_path %>
+<% @products.each do |product|%>
+    <%= product.lookupCode %>
+    <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+<% end %>
+
+
+):
+1:    <%= link_to <button type="button">Create New</button>, new_product_path %>
+2:    <% @products.each do |product|%>
+3:        <%= product.lookupCode %>
+4:        <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+5:    <% end %>
+  
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:28:42 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.9ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2723)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 80ms (Views: 45.7ms | ActiveRecord: 2.2ms | Allocations: 24676)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-11-03 22:28:49 -0600
+Processing by SessionsController#create as JS
+  Parameters: {"authenticity_token"=>"GgDIPmsFbzbJBkUjs5uWzcXDlKoKh+Xtsf0VVdwJVYyjFh3ezPfYff1LV0HIG5nHNIXI9o59QJbeCsFwuk7sRQ==", "employeeId"=>"253", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Redirected to http://localhost:3000/main_menu
+Completed 200 OK in 297ms (ActiveRecord: 0.3ms | Allocations: 1494)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:28:49 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 165)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 13.2ms | ActiveRecord: 0.3ms | Allocations: 5402)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:28:53 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (1.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 55)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 18.2ms | ActiveRecord: 1.5ms | Allocations: 4702)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:28:54 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1913)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.1ms | Allocations: 6612)
+
+
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:28:55 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1034)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1500)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= link_to <button type="button">Create New</button>, new_product_path %>
+<% @products.each do |product|%>
+    <%= product.lookupCode %>
+    <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+<% end %>
+
+
+):
+1:    <%= link_to <button type="button">Create New</button>, new_product_path %>
+2:    <% @products.each do |product|%>
+3:        <%= product.lookupCode %>
+4:        <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+5:    <% end %>
+  
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+app/views/products/index.html.erb:1: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>, new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:39:47 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2549)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 93ms (Views: 60.6ms | ActiveRecord: 1.2ms | Allocations: 21632)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-11-03 22:39:56 -0600
+Processing by SessionsController#create as JS
+  Parameters: {"authenticity_token"=>"VkgnxvzXfUn9BP8hN8C+Qtgxz8kG0ZzhIrl/6inxf53vXvImWyXKAslJ7UNMQLFIKXeTlYIrOZpNTqvPT7bGVA==", "employeeId"=>"253", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Redirected to http://localhost:3000/main_menu
+Completed 200 OK in 293ms (ActiveRecord: 0.3ms | Allocations: 1493)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:39:57 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.1ms | Allocations: 5379)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:40:00 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 56)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.1ms | Allocations: 4708)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:40:02 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 44.2ms | ActiveRecord: 0.2ms | Allocations: 6624)
+
+
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:40:02 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1374)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2756)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= link_to "#{<button type="button">Create New</button>}", new_product_path %>
+<% @products.each do |product|%>
+    <%= product.lookupCode %>
+    <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+<% end %>
+
+
+):
+1:    <%= link_to "#{<button type="button">Create New</button>}", new_product_path %>
+2:    <% @products.each do |product|%>
+3:        <%= product.lookupCode %>
+4:        <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+5:    <% end %>
+  
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+Started GET "/product" for 127.0.0.1 at 2020-11-03 22:40:04 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/product"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:40:05 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1037)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1533)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= link_to "#{<button type="button">Create New</button>}", new_product_path %>
+<% @products.each do |product|%>
+    <%= product.lookupCode %>
+    <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+<% end %>
+
+
+):
+1:    <%= link_to "#{<button type="button">Create New</button>}", new_product_path %>
+2:    <% @products.each do |product|%>
+3:        <%= product.lookupCode %>
+4:        <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+5:    <% end %>
+  
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:40:09 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1035)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1507)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= link_to "#{<button type="button">Create New</button>}", new_product_path %>
+<% @products.each do |product|%>
+    <%= product.lookupCode %>
+    <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+<% end %>
+
+
+):
+1:    <%= link_to "#{<button type="button">Create New</button>}", new_product_path %>
+2:    <% @products.each do |product|%>
+3:        <%= product.lookupCode %>
+4:        <%= link_to '<button type="button">Edit</button>', edit_product_path(product.id)%>
+5:    <% end %>
+  
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+app/views/products/index.html.erb:1: syntax error, unexpected '<'
+app/views/products/index.html.erb:1: syntax error, unexpected tCONSTANT, expecting do or '{' or '('
+app/views/products/index.html.erb:4: unknown regexp options - btt
+app/views/products/index.html.erb:4: unmatched close parenthesis: /button>}", new_product_path );@output_buffer.safe_append='
+app/views/products/index.html.erb:8: unterminated string meets end of file
+app/views/products/index.html.erb:8: syntax error, unexpected end-of-input, expecting tSTRING_DEND
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:43:16 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2577)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 85ms (Views: 56.8ms | ActiveRecord: 1.1ms | Allocations: 21667)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-11-03 22:43:24 -0600
+Processing by SessionsController#create as JS
+  Parameters: {"authenticity_token"=>"S8Siq1E4ddVXrlECbYOmWRfD51aCY3/pW7TjcgKzaNDy0ndL9srCnmPjQ2AWA6lT5oW7CgaZ2pI0QzdXZPTRGQ==", "employeeId"=>"253", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Redirected to http://localhost:3000/main_menu
+Completed 200 OK in 296ms (ActiveRecord: 0.6ms | Allocations: 1508)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:43:24 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 5405)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:43:28 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 56)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.3ms | Allocations: 4706)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:43:30 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 34.9ms | ActiveRecord: 0.1ms | Allocations: 6622)
+
+
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:43:32 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1248)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 19.3ms | ActiveRecord: 1.1ms | Allocations: 6254)
+
+
+Started POST "/productListing/new" for 127.0.0.1 at 2020-11-03 22:43:38 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/productListing/new"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:47:25 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.7ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2599)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 31.9ms | ActiveRecord: 2.9ms | Allocations: 21406)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-11-03 22:47:35 -0600
+Processing by SessionsController#create as JS
+  Parameters: {"authenticity_token"=>"tTXhG+yTlxjT/7QzT5rTdFmdnTdoA77sZ8WunVpnSAEMIzT7S2EgU+eyplE0Gtx+qNvBa+z5G5cIMnq4PCDxyA==", "employeeId"=>"253", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Redirected to http://localhost:3000/main_menu
+Completed 200 OK in 293ms (ActiveRecord: 0.4ms | Allocations: 1492)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:47:36 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 5413)
+
+
+Started GET "/main_menu" for 127.0.0.1 at 2020-11-03 22:47:39 -0600
+Processing by MainMenuController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."employeeId" = ? LIMIT ?[0m  [["employeeId", 253], ["LIMIT", 1]]
+  ↳ app/controllers/main_menu_controller.rb:3:in `index'
+  Rendering main_menu/index.html.erb within layouts/application
+  Rendered main_menu/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 56)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.2ms | Allocations: 4716)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:47:41 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.1ms | Allocations: 6617)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:47:45 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1906)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 6614)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-03 22:47:46 -0600
+Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/employee.rb:25:in `anyEmployeeExists'
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1903)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.2ms | Allocations: 6595)
+
+
+Started GET "/productListing" for 127.0.0.1 at 2020-11-03 22:47:47 -0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:2
+  Rendered products/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1193)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 17.5ms | ActiveRecord: 1.0ms | Allocations: 6166)
+
+
+Started GET "/productListing/new" for 127.0.0.1 at 2020-11-03 22:47:51 -0600
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2588)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 6711)
+
+
+Started POST "/productListing/new" for 127.0.0.1 at 2020-11-03 22:48:48 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/productListing/new"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
