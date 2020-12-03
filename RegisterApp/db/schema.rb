@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_10_26_234957) do
-
   create_table "employees", force: :cascade do |t|
     t.integer "employeeId", null: false
     t.string "password_digest", default: "", null: false
@@ -33,5 +32,4 @@ ActiveRecord::Schema.define(version: 2020_10_26_234957) do
     t.datetime "updated_at", precision: 6, null: false
     t.index "\"loopupCode\"", name: "index_products_on_loopupCode", unique: true
   end
-
 end

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Register - Employee</title>
+	<%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_pack_tag 'employee'%>
+	<%= javascript_pack_tag 'application'%>
+</head>
+
+<body>
+
+<% if !@error.blank? %>
+			<%= @error%>
+		<% end %>
+		
+	<div class="header">
+		<h1 class="primary-message">Employee Detail</h1>
+	</div>
+		
+	<div id="main" class="main">
+		<% if false%>
+		
+		<div class="inputContent">
+			<table id="employeeDetails">
+				<tbody>
+					<tr class="hidden">
+						<td>ID:</td>
+						<td>
+                            <%# if there is already an id in the locals.employeeId then populate field with id %>
+							<input id="employeeId" type="hidden" value="<%=current_employee.email%>" />
+						</td>
+					</tr>
+					<tr class="hidden">
+						<td>Manager ID:</td>
+						<td> 
+                            <%# if there is already a manager id in the locals.employeeId then populate field with id %>
+							<input id="employeeManagerId" type="hidden" value="<%=current_employee.manager_id%>" />
+						</td>
+					</tr>
+                    <%# if no employee or no empoyee.id then hide%>
+					<tr >
+						<td class="label">Employee ID:</td>
+						<td>
+                        <%# if there is already an employee id in the locals.employee.employeeId then populate field with id %>
+							<input id="employeeEmployeeId" type="text" value="" class="update" disabled />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">First Name:</td>
+						<td>
+                        <%# if there is already an name in the locals.employee.firstName then populate field with name %>
+							<input id="employeeFirstName" type="text" value="" class="update" />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Last Name:</td>
+						<td>
+                        <%# if there is already a last name in the locals.employee.lastName then populate field with name %>
+							<input id="employeeLastName" type="text" value="" class="update" />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Password:</td>
+						<td>
+							<input id="employeePassword" type="password" value="" class="update" />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Confirm Password:</td>
+						<td>
+							<input id="employeeConfirmPassword" type="password" value="" class="update" />
+						</td>
+					</tr>
+                    <%# if locals.isInitialEmployee then hide %>
+					
+				</tbody>
+			</table>
+		</div>
+		<% end %>
+
+		
+		 <form action="/employee" method="post">
+  <label for="firstName">First name:</label>
+  <input type="text" id="firstName" name="firstName"><br><br>
+  <label for="lastName">Last name:</label>
+  <input type="text" id="lastName" name="lastName"><br><br>
+  <label for="classification">classification:</label>
+  <input type="text" id="classification" name="classification"><br><br>
+  <label for="password">password:</label>
+  <input type="text" id="password" name="password"><br><br>
+  <label for="password2">renter password:</label>
+  <input type="text" id="password2" name="password2"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+        <%# if errorMessage then hide %>
+
+		<%# <div id="employeeSavedAlertModal" class="modal animate-opacity-show">
+			<div class="modal-content">
+				<div class="container gray-blue">
+					<h1>
+						<span>Employee</span><br />
+						<span>Saved</span>
+					</h1>
+				</div>
+			</div>
+		</div> %>
+	</div>
+    <%# if isInitialEmployee then hide %>
+	
+</body>
+
+</html>
