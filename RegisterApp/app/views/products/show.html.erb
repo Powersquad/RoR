@@ -1,0 +1,6 @@
+<%= button_to "Product Listing", products_path, method: :get %>
+<br>
+Lookup Code: <%= @product.lookupCode %>
+<br>
+Product Count: <%= @product.count %>
+<%= button_to "Edit", edit_product_path(@product.lookupCode), method: :get %>

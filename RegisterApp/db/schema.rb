@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_234957) do
+ActiveRecord::Schema.define(version: 2020_10_26_232245) do
+
   create_table "employees", force: :cascade do |t|
     t.integer "employeeId", null: false
     t.string "password_digest", default: "", null: false
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_234957) do
     t.integer "count", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"loopupCode\"", name: "index_products_on_loopupCode", unique: true
+    t.index ["lookupCode"], name: "index_products_on_lookupCode", unique: true
   end
+
 end

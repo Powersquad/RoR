@@ -27,19 +27,11 @@ class Employee < ApplicationRecord
 
   def isElevatedUser
     isElevated = false
-<<<<<<< HEAD
-
-=======
->>>>>>> 5950a752125922369601791da565e70854e6f128
     if self.general_manager?
       isElevated = true
     elsif self.shift_manager?
       isElevated = true
     end
-<<<<<<< HEAD
-
-=======
->>>>>>> 5950a752125922369601791da565e70854e6f128
     return isElevated
   end
 end

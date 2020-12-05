@@ -1,8 +1,9 @@
-<%= form_with model: @product do |f| %>
-    <%= f.label :id, "Look-UP Code" %>
-    <%= f.text_field :id, :required => true%></br>
+<%= button_to "Product Listing", products_path, method: :get %>
+<%= form_with model: @product, method: "put" do |f| %>
+    <%= f.label :lookupCode, "Look-UP Code" %>
+    <%= f.text_field :lookupCode, :required => true %></br>
     <%= f.label :count, "Count" %>
-    <%= f.text_field :count, :required => true%></br>
+    <%= f.text_field :count, :required => true %></br>
     <%= f.submit "Edit" %>
 <% end %>
-<%= link_to "Delete", product_path, method: delete %>
+<%= button_to "Delete", product_path, method: :delete %>

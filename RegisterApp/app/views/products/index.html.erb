@@ -1,6 +1,6 @@
-<%= button_to "Create New", new_product_path, :method => "get" %>
-<% @products.each do |product|%>
+<%= button_to "Main Menu", main_menu_index_path, method: :get %>
+<%= button_to "Create New", new_product_path, method: :get %>
+<% @products.each do |product| %>
     <%= product.lookupCode %>
-    <%= button_to "Edit", edit_product_path(product.id), :method => "get" %>
+    <%= button_to "Show", product_path(product.lookupCode), :method => "get" %>
 <% end %>
-
