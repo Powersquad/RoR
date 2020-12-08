@@ -1,9 +1,17 @@
 class Employee < ApplicationRecord
   belongs_to :manager, :class_name => "Employee", optional: true
+  has_one :cart
+  has_many :transactions
   enum classification: [:cashier, :shiftManager, :generalManager]
 
   has_secure_password
   validates_uniqueness_of :employeeId
+
+  after_create do |employee|
+    cart = Cart.new()
+    cart.employee = self
+    cart.save
+  end
 
   before_validation do |employee|
     id = 0

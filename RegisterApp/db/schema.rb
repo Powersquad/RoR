@@ -13,9 +13,11 @@
 ActiveRecord::Schema.define(version: 2020_12_08_034650) do
 
   create_table "carts", force: :cascade do |t|
+    t.integer "employee_id"
     t.integer "productCount", default: 0, null: false
     t.integer "total", default: 0, null: false
-    t.text "cart", default: "", null: false
+    t.text "cart", default: "{}", null: false
+    t.index ["employee_id"], name: "index_carts_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -41,9 +43,11 @@ ActiveRecord::Schema.define(version: 2020_12_08_034650) do
   end
 
   create_table "transactions", force: :cascade do |t|
+    t.integer "employee_id"
     t.integer "productCount", default: 0, null: false
     t.integer "total", default: 0, null: false
-    t.text "trans", default: "", null: false
+    t.text "trans", default: "{}", null: false
+    t.index ["employee_id"], name: "index_transactions_on_employee_id"
   end
 
 end

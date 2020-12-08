@@ -1,5 +1,5 @@
 class Cart < ApplicationRecord
-  store_accessor :cart
+  belongs_to :employee
   validates :cart, presence: true
 
   def getCart

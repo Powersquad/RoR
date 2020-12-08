@@ -1,5 +1,5 @@
 class Transaction < ApplicationRecord
-  store_accessor :trans
+  belongs_to :employee
   validates :trans, presence: true
 
   def getTrans
