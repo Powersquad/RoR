@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_232245) do
+ActiveRecord::Schema.define(version: 2020_12_08_034650) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "productCount", default: 0, null: false
+    t.integer "total", default: 0, null: false
+    t.text "cart", default: "", null: false
+  end
 
   create_table "employees", force: :cascade do |t|
     t.integer "employeeId", null: false
@@ -32,6 +38,12 @@ ActiveRecord::Schema.define(version: 2020_10_26_232245) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lookupCode"], name: "index_products_on_lookupCode", unique: true
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "productCount", default: 0, null: false
+    t.integer "total", default: 0, null: false
+    t.text "trans", default: "", null: false
   end
 
 end
