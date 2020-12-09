@@ -3,3 +3,8 @@
 <br>
 
 <%= button_to "Products", products_path, method: :get %>
+<% if @employee.isElevatedUser == true %>
+  <%= button_to new_employee_path, class: "button", :method => "get" do %>Create Employee<% end %>
+  <button type="button" class="action" id="salesReport">Sales Report</button>
+  <button type="button" class="action" id="cashierReport">Cashier Report</button>
+<% end %>

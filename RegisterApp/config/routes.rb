@@ -4,5 +4,13 @@ Rails.application.routes.draw do
   resources :employees
   resources :main_menu, only: [:index]
   resources :sessions, only: [:create, :destroy]
-  resources :products, :path => "productListing"
+  resources :products, :path => "productListing" do
+    collection do
+      get "search"
+    end
+  end
+
+  resources :cart, only: [:addItem] do
+    get :addItem, on: :collection
+  end
 end
