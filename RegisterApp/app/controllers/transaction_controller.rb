@@ -8,6 +8,20 @@ class TransactionController < ApplicationController
   def create
   end
 
+  def destroy
+    transaction_id = params[:id]
+    employee = Employee.find_by(employeeId: session[:employeeId])
+    transaction = employee.transactions.find_by(id: transaction_id)
+
+    if transaction.destroy
+      flash[:notice] = "Transaction was deleted"
+    else
+      flash[:error] = "Transaction was not deleted, please try again"
+    end
+    redirect_to transaction_path
+  
+  end
+
   def productBrowsing
     @products = Product.all
   end
