@@ -8,8 +8,11 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
-  resources :cart, only: [:addItem] do
+  resources :cart, only: [:addItem,:subItem,:deleteItem,:deleteAllItems] do
     get :addItem, on: :collection
+    get :subItem, on: :collection
+    get :deleteItem, on: :collection
+    get :deleteAllItems, on: :collection
   end
 
   resources :transaction, only: [:productBrowsing, :productSearch, :index, :show] do
