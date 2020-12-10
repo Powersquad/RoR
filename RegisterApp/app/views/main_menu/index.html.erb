@@ -2,6 +2,7 @@
 <%= link_to "Sign Out", session_path(session[:employeeId]), method: :delete %>
 <br>
 
+<%= button_to "Transactions", transaction_index_path, method: :get %>
 <%= button_to "Products", products_path, method: :get %>
 <% if @employee.isElevatedUser == true %>
   <%= button_to new_employee_path, class: "button", :method => "get" do %>Create Employee<% end %>

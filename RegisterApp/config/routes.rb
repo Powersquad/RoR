@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   resources :main_menu, only: [:index]
   resources :sessions, only: [:create, :destroy]
   resources :products, :path => "productListing" do
-    collection do
-      get "search"
-    end
+    get :search, on: :collection
   end
 
   resources :cart, only: [:addItem] do
     get :addItem, on: :collection
+  end
+
+  resources :transaction, only: [:productBrowsing, :productSearch, :index, :show] do
+    get :productSearch, on: :collection
+    get :productBrowsing, on: :collection
   end
 end
