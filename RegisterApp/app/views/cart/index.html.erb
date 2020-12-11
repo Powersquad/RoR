@@ -1,0 +1,13 @@
+<%= button_to "Main Menu", main_menu_index_path, method: :get %>
+
+
+
+<% @cartHash.each do |lookupCode, quantity| %>
+  <%= lookupCode %>
+  <%= button_to "Add", addItem_cart_index_path(lookupCode), method: :get %>
+  <%= button_to "Subtract", subItem_cart_index_path(lookupCode), method: :get %>
+  <%= button_to "Delete", deleteItem_cart_index_path(lookupCode), method: :get %>
+
+<% end %>
+<%= button_to "Cancel Transaction", deleteAllItems_cart_index_path(lookupCode), method: :get %>
+<%= button_to "Complete Transaction", deleteItem_cart_index_path(lookupCode), method: :get %>

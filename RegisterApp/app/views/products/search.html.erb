@@ -1,0 +1,5 @@
+<%= button_to "ProductListing", products_path, method: :get %>
+<% @products.each do |product| %>
+    <%= product.lookupCode %>
+    <%= button_to "Show", product_path(product.lookupCode), :method => "get" %>
+<% end %>

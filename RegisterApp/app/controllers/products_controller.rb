@@ -3,6 +3,41 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def search
+    searchCriteria = params[:searchCriteria]
+    allProducts = Product.all
+    @products = []
+
+    if searchCriteria.nil?
+      render plain: "Search Criteria is nil"
+      return
+    end
+    if allProducts.empty?
+      return
+    end
+
+    allProducts.each do |product|
+      match = true
+      lookupCode = product.lookupCode
+      count = 0
+      searchCriteria.split("").each { |c|
+        lookupCodeCharacter = lookupCode[count]
+        if lookupCodeCharacter.nil?
+          match = false
+        end
+        match = false unless c == lookupCodeCharacter
+        count = count + 1
+      }
+      if match
+        @products.append(product)
+      end
+      puts "Criteria: #{searchCriteria}"
+      puts "Product LookupCode: #{lookupCode}"
+      puts "Match: #{match}"
+    end
+    render "index.html.erb"
+  end
+
   def show
     @product = Product.find_by(lookupCode: params[:id])
   end
@@ -53,6 +88,13 @@ class ProductsController < ApplicationController
 
     if product.destroy
       flash[:notice] = "Product was deleted"
+      carts = Cart.all
+      carts.each do |cart|
+        byebug
+        hash = cart.getCart()
+        hash = hash.reject { |k, v| k == lookupCode }
+        cart.setCart(hash)
+      end
     else
       flash[:error] = "Product was not deleted, please try again"
     end

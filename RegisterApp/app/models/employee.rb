@@ -35,9 +35,9 @@ class Employee < ApplicationRecord
 
   def isElevatedUser
     isElevated = false
-    if self.general_manager?
+    if self.generalManager?
       isElevated = true
-    elsif self.shift_manager?
+    elsif self.shiftManager?
       isElevated = true
     end
     return isElevated

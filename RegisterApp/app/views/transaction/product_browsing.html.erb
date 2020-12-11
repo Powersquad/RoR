@@ -1,0 +1,17 @@
+<%= button_to "main menu", main_menu_index_path, method: :get %>
+
+<%= form_with(url: "/productListing/search", method: "get", local: true) do %>
+  <%= label_tag(:searchCriteria, "search for:") %>
+  <%= text_field_tag(:searchCriteria) %>
+  <%= submit_tag("search") %>
+<% end %>
+
+<% @products.each do |product| %>
+  <%= product.lookupcode %>
+  <%= button_to "show", product_path(product.lookupcode), method: :get %>
+    
+  <%= form_with(url: additem_cart_index_path(lookupcode: product.lookupcode), method: "get", local: false) do |f| %>
+   <%= f.hidden_field :lookupcode, :value => product.lookupcode %>
+   <%= f.submit "add item" %>
+  <% end %>
+<% end %>
