@@ -15,8 +15,9 @@ Rails.application.routes.draw do
     get :deleteAllItems, on: :collection
   end
 
-  resources :transaction, only: [:productBrowsing, :productSearch, :index, :show] do
+  resources :transaction, only: [:product_browsing, :productSearch, :index, :show, :create, :destroy] do
     get :productSearch, on: :collection
-    get :productBrowsing, on: :collection
+    get :product_browsing, on: :collection
   end
+  
 end

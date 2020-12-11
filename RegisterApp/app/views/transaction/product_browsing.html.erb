@@ -7,11 +7,15 @@
 <% end %>
 
 <% @products.each do |product| %>
-  <%= product.lookupcode %>
-  <%= button_to "show", product_path(product.lookupcode), method: :get %>
+  <%= product.lookupCode %>
+  <%# <%= product.price%> 
+  
     
-  <%= form_with(url: additem_cart_index_path(lookupcode: product.lookupcode), method: "get", local: false) do |f| %>
-   <%= f.hidden_field :lookupcode, :value => product.lookupcode %>
+  <%= form_with(url: addItem_cart_index_path(lookupCode: product.lookupCode), method: "get", local: false) do |f| %>
+   <%= f.hidden_field :lookupCode, :value => product.lookupCode %>
    <%= f.submit "add item" %>
   <% end %>
 <% end %>
+
+<%# <%= button_to "go to cart", cart_index_path, method: :get%>
+<%= button_to "transaction summary", transaction_index_path, method: :post%>
