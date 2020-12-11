@@ -1,0 +1,2 @@
+module UselessHelper
+end

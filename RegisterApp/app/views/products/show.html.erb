@@ -2,5 +2,8 @@
 <br>
 Lookup Code: <%= @product.lookupCode %>
 <br>
+Price: <%= @product.price %> 
+<br>
 Product Count: <%= @product.count %>
+<br>
 <%= button_to "Edit", edit_product_path(@product.lookupCode), method: :get %>

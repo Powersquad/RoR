@@ -1,6 +1,15 @@
-<%= button_to "main menu", main_menu_index_path, method: :get %>
-<%= button_to "create new transaction", product_browsing_transaction_index_path, method: :get%>
+<%= button_to "Main Menu", main_menu_index_path, method: :get %>
+<%= button_to "Create New Transaction", product_browsing_transaction_index_path, method: :get %>
 
-<%= button_to "Delete Transaction", transaction_path(), method: :delete %>
+<% @transactions.each do |transaction| %>
+  Total Items: <%= transaction.total %>
+  <br>
+  Total Unique Items: <%= transaction.productCount %>
+  <br>
+  Total Price: <%= transaction.totalPrice %>
+  <br>
+  <%= button_to "Show", transaction_path(transaction.id), method: :get %>
+  -------------------------------------------------------
+  <br>
 
-
+<% end %>

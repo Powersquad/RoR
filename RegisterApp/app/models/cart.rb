@@ -15,6 +15,7 @@ class Cart < ApplicationRecord
     hash = cart.getCart
     cart.total = calculateTotal(hash)
     cart.productCount = calculateProductCount(hash)
+    cart.totalPrice = Util::CalculateTotal.call(hash)
   end
 
   def calculateTotal(hash)

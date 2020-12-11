@@ -1,11 +1,12 @@
 <h1> Main Menu </h1>
 <%= link_to "Sign Out", session_path(session[:employeeId]), method: :delete %>
 <br>
+<br>
 
 <%= button_to "Transactions", transaction_index_path, method: :get %>
 <%= button_to "Products", products_path, method: :get %>
 <% if @employee.isElevatedUser == true %>
   <%= button_to new_employee_path, class: "button", :method => "get" do %>Create Employee<% end %>
-  <button type="button" class="action" id="salesReport">Sales Report</button>
-  <button type="button" class="action" id="cashierReport">Cashier Report</button>
+  <%= button_to "Sales Report", useless_index_path %>
+  <%= button_to "Cashier Report", useless_index_path %>
 <% end %>

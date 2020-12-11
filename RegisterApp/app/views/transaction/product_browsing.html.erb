@@ -1,21 +1,20 @@
-<%= button_to "main menu", main_menu_index_path, method: :get %>
-
-<%= form_with(url: "/productListing/search", method: "get", local: true) do %>
+<%= button_to "Main Menu", main_menu_index_path, method: :get %>
+<%= button_to "Cart", cart_index_path, method: :get %>
+<br>
+<%= form_with(url: productSearch_transaction_index_path, method: "get", local: true) do %>
   <%= label_tag(:searchCriteria, "search for:") %>
   <%= text_field_tag(:searchCriteria) %>
   <%= submit_tag("search") %>
 <% end %>
+<br>
 
 <% @products.each do |product| %>
-  <%= product.lookupCode %>
-  <%# <%= product.price%> 
-  
-    
-  <%= form_with(url: addItem_cart_index_path(lookupCode: product.lookupCode), method: "get", local: false) do |f| %>
-   <%= f.hidden_field :lookupCode, :value => product.lookupCode %>
-   <%= f.submit "add item" %>
-  <% end %>
+  LookupCode: <%= product.lookupCode %> <br>
+  Price: <%= product.price %> <br> 
+  <%= button_to "Add To Cart", addItem_cart_index_path(lookupCode: product.lookupCode), params: { lookupCode: product.lookupCode, original: "productAdd" }, method: :get, action: :addItem %>
+  ----------------------------- 
+  <br>
 <% end %>
 
-<%# <%= button_to "go to cart", cart_index_path, method: :get%>
-<%= button_to "transaction summary", transaction_index_path, method: :post%>
+<% # <%= button_to "go to cart", cart_index_path, method: :get %>
+<%= button_to "Transaction Summary", transaction_index_path, method: :post %>

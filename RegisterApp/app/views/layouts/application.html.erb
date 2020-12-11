@@ -11,7 +11,10 @@
 
   <body>
     <% if !!flash[:error] %>
-      <p><%= flash[:error] %></p> <br>
+      <p>ERROR: <%= flash[:error] %></p> 
+    <% end %>
+    <% if !!flash[:notice] %>
+      <p>Info: <%= flash[:notice] %></p> 
     <% end %>
     <%= yield %>
   </body>

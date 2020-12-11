@@ -3,6 +3,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
     create_table :products do |t|
       t.string :lookupCode, null: false, default: ""
       t.integer :count, null: false, default: 0
+      t.float :price, null: false, default: 0.0
       t.timestamps
     end
 

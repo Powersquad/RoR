@@ -4,6 +4,7 @@ class CreateCart < ActiveRecord::Migration[6.0]
       t.belongs_to :employee
       t.integer :productCount, null: false, default: 0
       t.integer :total, null: false, default: 0
+      t.float :totalPrice, null: false, default: 0.0
       t.text :cart, null: false, default: "{}"
     end
   end

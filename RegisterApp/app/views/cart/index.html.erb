@@ -1,13 +1,21 @@
 <%= button_to "Main Menu", main_menu_index_path, method: :get %>
+<%= button_to "Browse Products", product_browsing_transaction_index_path, method: :get %>
+<br>
+<% unless @cartHash.nil? %>
 
-
-
-<% @cartHash.each do |lookupCode, quantity| %>
-  <%= lookupCode %>
-  <%= button_to "Add", addItem_cart_index_path(lookupCode), method: :get %>
-  <%= button_to "Subtract", subItem_cart_index_path(lookupCode), method: :get %>
-  <%= button_to "Delete", deleteItem_cart_index_path(lookupCode), method: :get %>
-
+  <% @cartHash.each do |lookupCode, quantity| %>
+    LookupCode: <%= lookupCode %> <br>
+    Individual Price: <%= Product.find_by(lookupCode: lookupCode).price %> <br>
+    Quantity: <%= quantity %> <br>
+    <%= button_to "Add", addItem_cart_index_path, params: { lookupCode: lookupCode, original: "cartAdd" }, method: :get, action: :addItem %>
+    <%= button_to "Sub", subItem_cart_index_path, params: { lookupCode: lookupCode }, method: :get, action: :subItem %>
+    <%= button_to "Delete", deleteItem_cart_index_path, params: { lookupCode: lookupCode }, method: :get %>
+    -------------------------------------
+    <br>
+  <% end %>
+  TotalPrice: <%= Util::CalculateTotal.call(@cartHash) %>
 <% end %>
-<%= button_to "Cancel Transaction", deleteAllItems_cart_index_path(lookupCode), method: :get %>
-<%= button_to "Complete Transaction", deleteItem_cart_index_path(lookupCode), method: :get %>
+
+<br>
+<%= button_to "Cancel Transaction", deleteAllItems_cart_index_path, method: :get %>
+<%= button_to "Complete Transaction", transaction_index_path, method: :post %>

@@ -5,15 +5,11 @@ class CartController < ApplicationController
     employee = Employee.find_by(employeeId: session[:employeeId])
     cart = employee.cart
     @cartHash = cart.getCart
-    
-    
   end
-
-  
 
   def addItem
     lookupCode = params[:lookupCode]
-
+    action = params[:original]
     if lookupCode.nil?
       flash[:notice] = "No lookupCode"
       render plain: "No lookupCode"
@@ -33,11 +29,19 @@ class CartController < ApplicationController
     save = cart.setCart(cartHash)
 
     if save
-      flash[:notice] = "Added #{lookupCode} item"
-      render plain: "Added #{lookupCode} item"
+      if action == "cartAdd"
+        flash[:notice] = "Added 1 product for #{lookupCode}"
+        redirect_to cart_index_path
+      elsif action == "productAdd"
+        flash[:notice] = "Added #{lookupCode} to cart"
+        redirect_to product_browsing_transaction_index_path
+      else
+        flash[:error] = "Wrong action for #{lookupCode} item"
+        redirect_to main_menu_index_path
+      end
     else
       flash[:error] = "Couldn't add #{lookupCode} item"
-      render plain: "Couldn't add #{lookupCode} item"
+      redirect_to cart_index_path
     end
   end
 
@@ -59,19 +63,20 @@ class CartController < ApplicationController
       flash[:notice] = "No product"
       render plain: "No product"
       return
-
     else
-      if amount!=0
+      if amount == 1
+        cartHash = cartHash.reject { |k, v| k == lookupCode }
+      else
         cartHash[lookupCode] = amount - 1
       end
     end
     save = cart.setCart(cartHash)
     if save
-      flash[:notice] = "Deleted 1 #{lookupCode} item"
-      render plain: "Deleted 1 #{lookupCode} item"
+      flash[:notice] = "Sub 1 product for #{lookupCode}"
+      redirect_to cart_index_path
     else
       flash[:error] = "Couldn't delete 1 #{lookupCode} item"
-      render plain: "Couldn't delete 1 #{lookupCode} item"
+      redirect_to cart_index_path
     end
   end
 
@@ -99,20 +104,25 @@ class CartController < ApplicationController
       save = cart.setCart(hash)
     end
     if save
-      flash[:notice] = "Deleted #{lookupCode} item"
-      render plain: "Deleted #{lookupCode} item"
+      flash[:notice] = "Removed product for #{lookupCode}"
+      redirect_to cart_index_path
     else
       flash[:error] = "Couldn't delete #{lookupCode} item"
-      render plain: "Couldn't delete #{lookupCode} item"
+      redirect_to cart_index_path
     end
   end
 
   def deleteAllItems
-    carts.each do |cart|
-      hash = cart.getCart()
-      hash = hash.reject { |k, v| k == lookupCode }
-      cart.setCart(hash)
+    employee = Employee.find_by(employeeId: session[:employeeId])
+    cart = employee.cart
+    save = cart.setCart({})
+
+    if save
+      flash[:notice] = "Cleared Cart"
+    else
+      flash[:error] = "Could not clear Cart"
     end
+    redirect_to product_browsing_transaction_index_path
   end
 
   def checkEmployee

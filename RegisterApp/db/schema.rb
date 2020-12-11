@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_034650) do
     t.integer "employee_id"
     t.integer "productCount", default: 0, null: false
     t.integer "total", default: 0, null: false
+    t.float "totalPrice", default: 0.0, null: false
     t.text "cart", default: "{}", null: false
     t.index ["employee_id"], name: "index_carts_on_employee_id"
   end
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_034650) do
   create_table "products", force: :cascade do |t|
     t.string "lookupCode", default: "", null: false
     t.integer "count", default: 0, null: false
+    t.float "price", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lookupCode"], name: "index_products_on_lookupCode", unique: true
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_034650) do
     t.integer "employee_id"
     t.integer "productCount", default: 0, null: false
     t.integer "total", default: 0, null: false
+    t.float "totalPrice", default: 0.0, null: false
     t.text "trans", default: "{}", null: false
     t.index ["employee_id"], name: "index_transactions_on_employee_id"
   end

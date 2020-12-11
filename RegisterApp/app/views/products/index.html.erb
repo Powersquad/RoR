@@ -1,13 +1,16 @@
 <%= button_to "Main Menu", main_menu_index_path, method: :get %>
 <%= button_to "Create New", new_product_path, method: :get %>
-
+<br>
 <%= form_with(url: "/productListing/search", method: "get", local: true) do %>
   <%= label_tag(:searchCriteria, "search for:") %>
   <%= text_field_tag(:searchCriteria) %>
   <%= submit_tag("search") %>
 <% end %>
-
+<br>
 <% @products.each do |product| %>
-  <%= product.lookupCode %>
+  LookupCode: <%= product.lookupCode %> <br>
+  Price: <%= product.price %> <br>
   <%= button_to "show", product_path(product.lookupCode), method: :get %>
+  ------------------------
+  <br>
 <% end %>

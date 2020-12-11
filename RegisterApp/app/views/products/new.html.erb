@@ -1,7 +1,11 @@
+<%= button_to "Main Menu", main_menu_index_path, method: :get %>
+<br>
 <%= form_with model: @product do |f| %>
     <%= f.label :id, "Look-UP Code" %>
-    <%= f.text_field :id, :required => true%></br>
+    <%= f.text_field :id, :required => true %><br>
+    <%= f.label :price, "Price" %>
+    <%= f.text_field :price, :required => true %> <br>
     <%= f.label :count, "Count" %>
-    <%= f.text_field :count, :required => true%></br>
+    <%= f.text_field :count, :required => true %><br>
     <%= f.submit "Create" %>
 <% end %>

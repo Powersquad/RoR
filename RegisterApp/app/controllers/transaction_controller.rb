@@ -1,5 +1,6 @@
 class TransactionController < ApplicationController
   before_action :checkEmployee
+
   def index
     employee = Employee.find_by(employeeId: session[:employeeId])
     @transactions = employee.transactions
@@ -8,7 +9,6 @@ class TransactionController < ApplicationController
   def show
     employee = Employee.find_by(employeeId: session[:employeeId])
     @transaction = employee.transactions.find_by(id: params[:id])
-    
   end
 
   def create
@@ -25,7 +25,6 @@ class TransactionController < ApplicationController
       flash[:error] = "Product did not save, please try again"
       redirect_to cart_index_path
     end
-    
   end
 
   def destroy
@@ -38,11 +37,10 @@ class TransactionController < ApplicationController
     else
       flash[:error] = "Transaction was not deleted, please try again"
     end
-    redirect_to transaction_path
-  
+    redirect_to transaction_index_path
   end
 
-  def productBrowsing
+  def product_browsing
     @products = Product.all
   end
 
@@ -78,7 +76,7 @@ class TransactionController < ApplicationController
       puts "Product LookupCode: #{lookupCode}"
       puts "Match: #{match}"
     end
-    render "item_browsing.html.erb"
+    render "product_browsing.html.erb"
   end
 
   def checkEmployee
@@ -87,5 +85,4 @@ class TransactionController < ApplicationController
       return
     end
   end
-
 end

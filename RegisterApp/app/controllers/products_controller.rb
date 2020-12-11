@@ -49,7 +49,16 @@ class ProductsController < ApplicationController
   def create
     id = params[:product][:id]
     count = params[:product][:count]
-    product = Product.new(lookupCode: id, count: count)
+    price = params[:product][:price]
+
+    product = Product.find_by(lookupCode: id)
+    if not product.nil?
+      flash[:error] = "Product already exists"
+      redirect_to new_product_path
+      return
+    end
+
+    product = Product.new(lookupCode: id, count: count, price: price)
 
     if product.save
       flash[:notice] = "Product created"
@@ -61,17 +70,17 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    puts params[:i]
     @product = Product.find_by(lookupCode: params[:id])
-    puts @product.lookupCode
-    puts @product.count
   end
 
   def update
     lookupCode = params[:product][:lookupCode]
     count = params[:product][:count]
+    price = params[:product][:price]
+
     product = Product.find_by(lookupCode: lookupCode)
     product.count = count
+    product.price = price
 
     if product.save
       flash[:notice] = "Product was successfully saved"
@@ -90,7 +99,6 @@ class ProductsController < ApplicationController
       flash[:notice] = "Product was deleted"
       carts = Cart.all
       carts.each do |cart|
-        byebug
         hash = cart.getCart()
         hash = hash.reject { |k, v| k == lookupCode }
         cart.setCart(hash)

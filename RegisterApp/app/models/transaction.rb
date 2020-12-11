@@ -15,6 +15,7 @@ class Transaction < ApplicationRecord
     hash = transaction.getTrans
     transaction.total = calculateTotal(hash)
     transaction.productCount = calculateProductCount(hash)
+    transaction.totalPrice = Util::CalculateTotal.call(hash)
   end
 
   def calculateTotal(hash)

@@ -10,7 +10,7 @@ class Employee < ApplicationRecord
   after_create do |employee|
     cart = Cart.new()
     cart.employee = self
-    cart.save
+    cart.setCart({})
   end
 
   before_validation do |employee|

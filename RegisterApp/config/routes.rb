@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   root "employees#index"
   resources :employees
   resources :main_menu, only: [:index]
+  resources :useless, only: [:index]
   resources :sessions, only: [:create, :destroy]
   resources :products, :path => "productListing" do
     get :search, on: :collection
   end
 
-  resources :cart, only: [:addItem,:subItem,:deleteItem,:deleteAllItems] do
+  resources :cart, only: [:addItem, :subItem, :deleteItem, :deleteAllItems, :index] do
     get :addItem, on: :collection
     get :subItem, on: :collection
     get :deleteItem, on: :collection
@@ -19,5 +20,4 @@ Rails.application.routes.draw do
     get :productSearch, on: :collection
     get :product_browsing, on: :collection
   end
-  
 end

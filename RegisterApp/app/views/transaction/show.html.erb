@@ -1,11 +1,25 @@
+<%= button_to "Main Menu", main_menu_index_path, method: :get %>
+
+Products: 
+<br>
+<br>
 <% @transaction.getTrans().each do |key, value| %>
-key <%=key%>
-value <%=value%>
+  LookupCode: <%= key %>
+  <br>
+  Price: <%= Product.find_by(lookupCode: key).price %>
+  <br>
+  Quantity: <%= value %>
+  <br>
+----------------------------------------
+  <br>
+
 <% end %>
-<%# <% @products.each do |product| %>
-  <%# <%= product.lookupcode %> %>
-  <%# <%= product.price%> %>
-  
-    
-  
-<%# <% end %> %> 
+<br>
+Total Items: <%= @transaction.total %>
+<br>
+Total Unique Items: <%= @transaction.productCount %>
+<br>
+Total Price: <%= @transaction.totalPrice %>
+<br>
+
+<%= button_to "Delete Transaction", transaction_path(@transaction.id), method: :delete %>
