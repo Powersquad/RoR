@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get :addItem, on: :collection
   end
 
-  resources :transaction, only: [:product_browsing, :productSearch, :index, :show, :create] do
+  resources :transaction, only: [:product_browsing, :productSearch, :index, :show, :create, :destroy] do
     get :productSearch, on: :collection
     get :product_browsing, on: :collection
   end
