@@ -1,14 +1,34 @@
 class TransactionController < ApplicationController
+  before_action :checkEmployee
   def index
+    employee = Employee.find_by(employeeId: session[:employeeId])
+    @transactions = employee.transactions
   end
 
   def show
+    employee = Employee.find_by(employeeId: session[:employeeId])
+    @transaction = employee.transactions.find_by(id: params[:id])
+    
   end
 
   def create
+    employee = Employee.find_by(employeeId: session[:employeeId])
+    cart = employee.cart
+    newTrans = Transaction.new
+    newTrans.employee = employee
+    save = newTrans.setTrans(cart.getCart)
+    if save
+      flash[:notice] = "Product created"
+      redirect_to transaction_index_path
+      cart.setCart({})
+    else
+      flash[:error] = "Product did not save, please try again"
+      redirect_to cart_index_path
+    end
+    
   end
 
-  def productBrowsing
+  def product_browsing
     @products = Product.all
   end
 
@@ -46,4 +66,12 @@ class TransactionController < ApplicationController
     end
     render "item_browsing.html.erb"
   end
+
+  def checkEmployee
+    if Employee.find_by(employeeId: session[:employeeId]).nil?
+      render plain: "Can't find employeeId"
+      return
+    end
+  end
+
 end

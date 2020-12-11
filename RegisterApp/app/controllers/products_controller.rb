@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     product = Product.new(lookupCode: id, count: count)
 
     if product.save
-      flash[:noitce] = "Product created"
+      flash[:notice] = "Product created"
       redirect_to edit_product_path(id)
     else
       flash[:error] = "Product did not save, please try again"
